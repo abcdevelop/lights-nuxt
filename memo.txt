@@ -1,0 +1,18 @@
+npm install -g create-nuxt-app
+
+cd nuxt-projects
+
+create-nuxt-app lights2
+
+cd lights2
+
+npm install
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/abcdevelop/lights2.git
+git push -u origin master
+
+npm install --save firebase
+npm install --save vuexfire
