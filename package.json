@@ -1,7 +1,7 @@
 {
-  "name": "lights2",
+  "name": "lights-nuxt",
   "version": "1.0.0",
-  "description": "My mathematical Nuxt.js project",
+  "description": "Nuxt.js project for testing database driven updates",
   "author": "abcdevelop",
   "private": true,
   "scripts": {
