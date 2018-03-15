@@ -20,3 +20,5 @@ npm install --save vuexfire
 
 
 
+git push
+git push heroku
