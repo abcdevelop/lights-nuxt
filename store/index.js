@@ -1,65 +1,68 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from '@/axios.config'
-//import {dbLightsRef} from '@/firebase.config'
-
-
 import {firebaseMutations, firebaseAction} from 'vuexfire'
 
 Vue.use(Vuex)
 
 const state = {
-  lights:{
-    color:{
-    '-L79RWLFdxW_VYZlFzoD':{
-        values:['white'],
-        index:0
-      }
-    }
-  },
-  color:[]
+  lights: {
+    colors: {
+      '0':'blue',
+      '1':'white',
+      '2':'red',
+      '3':'orange',
+      '4':'green',
+      '5':'purple'
+    },
+    counter: 0,
+    index: 0
+  }
 }
 
 const getters = {
-  getLights:state => state.lights,
-  getColor:state => state.color,
-  currentColor: state => {
-  const firstColorKey = Object.keys(state.lights.color)[0]
-  const firstColor = state.lights.color[firstColorKey]
-  return  firstColor.values[firstColor.index]
-}
+  lights: state => state.lights,
+  colors: state => state.lights.colors,
+  currentColor: state => state.lights.colors[state.lights.index],
+  counter: state => state.lights.counter
 }
 
 const mutations = {
-  ...firebaseMutations
+  ...firebaseMutations,
+  ADD_COLOR: (state, color) => state.lights.colors.push(color),
+  CHANGE_INDEX: (state, index) => state.lights.index = index,
+  INC_COUNTER: (state, counter) => state.lights.counter = counter
 }
 
 const actions = {
   // nuxtServerInit({dispatch}, context) {
   //   console.log('nuxtServerInit')
-  //   return dispatch('setLightsRef',dbLightsRef)
   // },
   addColor: ({commit}, color) => {
-    Axios.post('/color.json', color)
+    //commit('ADD_COLOR', color)
+    Axios.post('/lights/color.json', color)
       .catch(e => console.log(e))
+    // //dbLightsRef.colors.push(color)
   },
-  changeColorIndex({state,commit}) {
-    const firstColorKey = Object.keys(state.lights.color)[0]
-    const firstColor = state.lights.color[firstColorKey]
-    let firstColorIndex = 0
-
-    if (firstColor.index < firstColor.values.length -1) {
-      firstColorIndex = firstColor.index + 1
+  changeIndex({state, commit}) {
+    let index = 0
+    if (state.lights.index < state.lights.colors.length - 1) {
+      index = state.lights.index + 1
     }
-
-    Axios.put('/color/'+firstColorKey+'/index.json', firstColorIndex)
+    // commit('CHANGE_INDEX', index)
+    return Axios.put('/index.json', index)
       .catch(e => console.log(e))
+    // // dbLightsRef.index=index
+  },
+  incCounter({state, commit}) {
+    const counter = state.lights.counter + 1
+    // commit('INC_COUNTER', counter)
+    return Axios.put('/counter.json', counter)
+      .catch(e => console.log(e))
+    // //dbLightsRef.counter=counter
   },
   setLightsRef: firebaseAction(({bindFirebaseRef}, {ref}) => {
     bindFirebaseRef('lights', ref)
-  }),
-  setColorRef: firebaseAction(({bindFirebaseRef}, {ref}) => {
-    bindFirebaseRef('color', ref)
   })
 }
 

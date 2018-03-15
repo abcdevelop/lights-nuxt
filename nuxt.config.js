@@ -61,4 +61,11 @@ module.exports = {
 
     }
   }
+  // env:{
+  //   baseUrl: process.env.BASE_URL || 'https://mynuxtblog.firebaseio.com',
+  //   fbAPIKey: 'AIzaSyCn3PR-rlqb9SVeuFoaVus6zD2htSh9uGM',
+  //   HOST:'0.0.0.0',
+  //   NODE_ENV:'production',
+  //   NPM_CONFIG_PRODUCTION:false
+  // }
 }

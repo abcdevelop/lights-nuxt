@@ -16,3 +16,7 @@ git push -u origin master
 
 npm install --save firebase
 npm install --save vuexfire
+
+
+
+
