@@ -9,6 +9,8 @@ npm-debug.log
 
 # Nuxt generate
 
+# PWA
+sw.*
 
 # Editor directories and files
 .idea
@@ -16,3 +18,6 @@ npm-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+
+
+.local

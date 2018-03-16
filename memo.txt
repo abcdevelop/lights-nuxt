@@ -18,7 +18,8 @@ npm install --save firebase
 npm install --save vuexfire
 
 
-
-
 git push
 git push heroku
+
+
+npm install --save @nuxtjs/pwa

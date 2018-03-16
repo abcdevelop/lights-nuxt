@@ -110,8 +110,8 @@ export default (ctx, inject) => {
   const axiosOptions = {
     // baseURL
     baseURL : process.browser
-      ? 'http://localhost:3000/'
-      : (process.env._AXIOS_BASE_URL_ || 'http://localhost:3000/'),
+      ? 'https://infos-tools.firebaseio.com/lights'
+      : (process.env._AXIOS_BASE_URL_ || 'https://infos-tools.firebaseio.com/lights'),
 
     // Create fresh objects for all default header scopes
     // Axios creates only one which is shared across SSR requests!

@@ -1,8 +1,10 @@
 # lights-nuxt
 
-> Nuxt.js project for testing database driven updates
+> A Nuxt.js project for testing database driven updates
 
 ## Build Setup
+
+The firebase.config.js file must be completed with credentials
 
 ``` bash
 # install dependencies
@@ -18,5 +20,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

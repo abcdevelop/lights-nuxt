@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Axios from '@/axios.config'
 import {firebaseMutations, firebaseAction} from 'vuexfire'
 
 Vue.use(Vuex)
@@ -8,12 +7,12 @@ Vue.use(Vuex)
 const state = {
   lights: {
     colors: {
-      '0':'blue',
-      '1':'white',
-      '2':'red',
-      '3':'orange',
-      '4':'green',
-      '5':'purple'
+      '0': 'blue',
+      '1': 'white',
+      '2': 'red',
+      '3': 'orange',
+      '4': 'green',
+      '5': 'purple'
     },
     counter: 0,
     index: 0
@@ -40,9 +39,8 @@ const actions = {
   // },
   addColor: ({commit}, color) => {
     //commit('ADD_COLOR', color)
-    Axios.post('/lights/color.json', color)
+    this.$axios.post('/lights/color.json', color)
       .catch(e => console.log(e))
-    // //dbLightsRef.colors.push(color)
   },
   changeIndex({state, commit}) {
     let index = 0
@@ -50,20 +48,16 @@ const actions = {
       index = state.lights.index + 1
     }
     // commit('CHANGE_INDEX', index)
-    return Axios.put('/index.json', index)
+    return this.$axios.put('/index.json', index)
       .catch(e => console.log(e))
-    // // dbLightsRef.index=index
   },
   incCounter({state, commit}) {
     const counter = state.lights.counter + 1
     // commit('INC_COUNTER', counter)
-    return Axios.put('/counter.json', counter)
+    return this.$axios.put('/counter.json', counter)
       .catch(e => console.log(e))
-    // //dbLightsRef.counter=counter
   },
-  setLightsRef: firebaseAction(({bindFirebaseRef}, {ref}) => {
-    bindFirebaseRef('lights', ref)
-  })
+  setLightsRef: firebaseAction(({bindFirebaseRef}, {ref}) => bindFirebaseRef('lights', ref))
 }
 
 const store = () => {
