@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {firebaseMutations, firebaseAction} from 'vuexfire'
+import {dbLightsRef} from '@/firebase.config'
 
 Vue.use(Vuex)
 
@@ -10,9 +11,6 @@ const state = {
       '0': 'blue',
       '1': 'white',
       '2': 'red',
-      '3': 'orange',
-      '4': 'green',
-      '5': 'purple'
     },
     counter: 0,
     index: 0
@@ -34,9 +32,13 @@ const mutations = {
 }
 
 const actions = {
-  // nuxtServerInit({dispatch}, context) {
-  //   console.log('nuxtServerInit')
-  // },
+  nuxtServerInit({dispatch}, context) {
+    console.log('nuxtServerInit')
+  },
+  async nuxtClientInit({dispatch}, context) {
+    console.log('nuxtClientInit')
+  await this.dispatch('setLightsRef', dbLightsRef)
+  },
   addColor: ({commit}, color) => {
     //commit('ADD_COLOR', color)
     this.$axios.post('/lights/color.json', color)

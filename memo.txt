@@ -23,3 +23,6 @@ git push heroku
 
 
 npm install --save @nuxtjs/pwa
+
+
+

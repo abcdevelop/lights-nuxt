@@ -7,12 +7,17 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import {dbLightsRef} from '@/firebase.config'
+  //import {dbLightsRef} from '@/firebase.config'
 
   export default {
     name: 'app',
-    created() {
-      this.$store.dispatch('setLightsRef', dbLightsRef)
+    //created() {
+    //  this.$store.dispatch('setLightsRef', dbLightsRef)
+    //},
+    data(){
+      return {
+        isDisabled:this.counter>0
+      }
     },
     computed: {
       ...mapGetters([
