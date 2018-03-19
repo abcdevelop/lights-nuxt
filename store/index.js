@@ -35,9 +35,9 @@ const actions = {
   nuxtServerInit({dispatch}, context) {
     console.log('nuxtServerInit')
   },
-  async nuxtClientInit({dispatch}, context) {
+  nuxtClientInit({dispatch}, context) {
     console.log('nuxtClientInit')
-  await this.dispatch('setLightsRef', dbLightsRef)
+    this.dispatch('setLightsRef', dbLightsRef)
   },
   addColor: ({commit}, color) => {
     //commit('ADD_COLOR', color)
