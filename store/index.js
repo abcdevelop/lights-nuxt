@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {firebaseMutations, firebaseAction} from 'vuexfire'
-import {dbLightsRef} from '@/firebase.config'
+import {lightsRef,randomRef} from '@/firebase.config'
 
 Vue.use(Vuex)
 
@@ -30,10 +30,16 @@ const actions = {
   },
   nuxtClientInit({dispatch}, context) {
     console.log('nuxtClientInit')
-    this.dispatch('setLightsRef', dbLightsRef)
+    this.dispatch('setLightsRef', lightsRef)
   },
   changeRandom() {
-    return this.$axios.put('/random.json', Math.random())
+    // axios approch
+    // return this.$axios.put('/random.json', Math.random())
+    // .then(() => console.log('putRandom OK!'))
+    //  .catch(e => console.log(e))
+    // firebase approch
+    randomRef.set(Math.random())
+      .then(() => console.log('setRandom OK!'))
       .catch(e => console.log(e))
   },
   setLightsRef: firebaseAction(({bindFirebaseRef}, {ref}) => bindFirebaseRef('lights', ref))

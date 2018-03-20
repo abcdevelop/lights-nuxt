@@ -10,6 +10,7 @@ var config = {
 };
 const firebaseApp = Firebase.initializeApp(config);
 const db = firebaseApp.database();
-export const dbLightsRef = db.ref('lights');
+export const lightsRef = db.ref('lights');
+export const randomRef = lightsRef.child('random');
 
 
