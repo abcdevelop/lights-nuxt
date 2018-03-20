@@ -33,6 +33,7 @@ const actions = {
     this.dispatch('setLightsRef', lightsRef)
   },
   changeRandom() {
+    //const length=lightsRef.child('colors').orderByKey().limitToLast(1) //for test
     // axios approch
     // return this.$axios.put('/random.json', Math.random())
     // .then(() => console.log('putRandom OK!'))
