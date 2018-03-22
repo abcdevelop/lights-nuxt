@@ -8,7 +8,7 @@ Vue.use(Vuex)
 const state = {
   lights: {
     colors: {
-      '0': 'blue'
+      '0': 'white'
     },
     counter: 0,
     index: 0
@@ -25,9 +25,9 @@ const mutations = {
 }
 
 const actions = {
-  nuxtServerInit({dispatch}, context) {
-    console.log('nuxtServerInit')
-  },
+  // nuxtServerInit({dispatch}, context) {
+  //   console.log('nuxtServerInit')
+  // },
   nuxtClientInit({dispatch}, context) {
     console.log('nuxtClientInit')
     this.dispatch('setLightsRef', lightsRef)
